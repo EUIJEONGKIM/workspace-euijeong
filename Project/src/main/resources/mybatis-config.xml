@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+ 
+ <configuration>
+ 
+  	<settings>
+		 <setting name="mapUnderscoreToCamelCase" value="true"/>
+	 </settings>
+ 
+ 	<typeAliases>
+ 		<typeAlias type="kr.ac.kopo.project.model.Member" alias="Member"/>
+ 		<typeAlias type="kr.ac.kopo.project.model.Board" alias="Board"/>
+ 		<typeAlias type="kr.ac.kopo.project.model.Reply" alias="Reply"/>
+ 	
+ 	</typeAliases>
+ 	
+ 	<mappers>
+ 		<mapper resource="mybatis/member.xml"/>
+ 		<mapper resource="mybatis/board.xml"/>
+ 		<mapper resource="mybatis/reply.xml"/>
+ 	</mappers>
+ 	
+ 
+	
+	 
+ </configuration>
