@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%
@@ -61,7 +62,7 @@ footer {
 			<div>
 				${item.context}	
 			</div>
-			
+		
 <!-- 댓글 -->			
 			<hr>
 			
@@ -70,10 +71,13 @@ footer {
 					<div class="mb-3">	
 						<form id="insertForm">
 							<input type="hidden" name="boardNumber" value="${item.boardNumber}" id="boardNumber"> 
+							<label for="exampleFormControlTextarea1" class="form-label">댓글</label>
+							
+							<c:if test="${sessionScope.member != null}">
 							<input type="hidden" name="id" value="${sessionScope.member.id}" id="id"> 
-					  		<label for="exampleFormControlTextarea1" class="form-label">댓글</label>
-					  		<input type="text" id="replyContext" class="form-control" name="replyContext">
+					  		</c:if>
 					  		
+					  		<input type="text" id="replyContext" class="form-control" name="replyContext">
 					  		<button type="button" class="btn btn-dark" name="insertBtn" id="insertBtn">등록 </button>
 						</form>
 					</div>
@@ -102,6 +106,10 @@ const insertData = {
 	boardNumber: $("#boardNumber").val()
 };
 
+$(document).on(function(){
+	replyList();
+});
+
 $("#insertBtn").click(function(){
 	insertData.replyContext = $("#replyContext").val();
 
@@ -117,15 +125,14 @@ function replyInsert(insertData) {
 		dataType: "json",
 		success: function(data){
 			if(data == 1){
-				replyList();
+				replyList(data);
+				console.log(data);
 				$("#replyContext").val('');
 			}
 		}
 	});
 }
-$(document).on(function(){
-	replyList();
-});
+
 
 function replyList(){
 	$.ajax({
@@ -134,18 +141,16 @@ function replyList(){
 		contentType: "application/json",
 		dataType: "json",
 		success: function(data){
-			console.log(data)
 			
 			var a = '';
 			
-			for(let i=0; i < data.lenth ; i++){ 
+			for(let i=0; i < data.length ; i++){ 
 	                a += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
-	                a += '<div class="commentInfo'+data[i].replyNumber+'">'+'댓글번호 : '+value.replyNumber+' / 작성자 : '+value.id;
-	                a += '<a onclick="commentUpdate('+data[i].replyNumber+',\''+value.content+'\');"> 수정 </a>';
-	                a += '<a onclick="replyDelete('+data[i].replyNumber+');"> 삭제 </a> </div>';
-	                a += '<div class="commentContent'+data[i].replyNumber+'"> <p> 내용 : '+data[i].replyContext +'</p>';
+	                a += '<div>'+'댓글번호 : '+data[i].replyNumber+' | 작성자 : '+data[i].id;
+	                a += '<a onclick="replyDelete('+data[i].replyNumber+')"> 삭제 </a> </div>';
+	                a += '<div class="commentContent"> <p> 내용 : '+data[i].replyContext +'</p>';
 	                a += '</div></div>';
-	            });
+	            };
 	            
 	            $("#replyList").html(a);
 	            console.log(a);
@@ -159,8 +164,13 @@ function replyDelete(replyNumber) {
 	$.ajax({
 		url: "/select/delete/" + replyNumber,
 		type: "DELETE",
+		contentType: "application/json",
+		dataType: "json",
 		success: function(data){
 			console.log(data);
+			if( replyNumber === data){
+				replyList();
+			}
 		}
 		
 	});

@@ -32,7 +32,9 @@ public class ReplyController {
 	
 	@PutMapping("/add")
 	public Reply add(@RequestBody Reply item) {
-		System.out.println(item.getReplyContext());
+		Reply reply = new Reply();
+		reply.setId("id");
+		
 		service.add(item);
 		
 		return item;
