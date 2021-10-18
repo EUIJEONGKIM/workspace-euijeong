@@ -8,14 +8,18 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.ac.kopo.project.model.Board;
 import kr.ac.kopo.project.model.Member;
+import kr.ac.kopo.project.model.Reply;
 import kr.ac.kopo.project.service.BoardService;
 import kr.ac.kopo.project.service.MemberService;
+import kr.ac.kopo.project.service.ReplyService;
 import kr.ac.kopo.project.util.Pager;
 
 @Controller
@@ -26,6 +30,9 @@ public class RootController {
 	
 	@Autowired
 	BoardService boardService;
+	
+	@Autowired
+	ReplyService replyService;
 	
 	//메인 페이지
 	@RequestMapping({"/","/display"})
@@ -99,14 +106,13 @@ public class RootController {
 		return "board";
 	}
 	//메인에서 상세페이지
-	@RequestMapping("/select")
-	public String select(int boardNumber, Model model) {
+	@RequestMapping("/select/{boardNumber}")
+	public String select(@PathVariable int boardNumber, Model model) {
 		Board item = boardService.item(boardNumber);
 		
 		model.addAttribute("item", item);
 		
 		return "select";
 	}
-	
 	
 }

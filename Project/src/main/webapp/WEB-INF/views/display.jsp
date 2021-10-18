@@ -166,7 +166,7 @@ footer {
   <c:forEach var="item" items="${list}">
   <div class="col">
     <div class="card h-100">
-      <a href="select?boardNumber=${item.boardNumber}"><img src="${item.thumbnail}" class="card-img-top" alt="썸네일" id="thumimg"></a>
+      <a href="select/${item.boardNumber}"><img src="${item.thumbnail}" class="card-img-top" alt="썸네일" id="thumimg"></a>
       <div class="card-body">
         <h5 class="card-title">${item.title}</h5>
         <p class="card-text">작성자: ${item.id}</p>

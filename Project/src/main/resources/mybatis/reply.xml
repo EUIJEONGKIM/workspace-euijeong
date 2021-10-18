@@ -10,10 +10,14 @@
 	<insert id="add">
 		INSERT INTO reply
 		VALUES (REPLY_SEQ.nextval, #{boardNumber}, #{id}, #{replyContext}, default)
+		
+		<selectKey keyProperty="replyNumber" resultType="Integer" order="AFTER">
+			SELECT REPLY_SEQ.currval FROM dual
+		</selectKey>
 	</insert>
 	
 	<delete id="delete">
 		DELETE FROM reply
-		WHERE reply_number=#{replyNumber}
+		WHERE reply_number=#{replyNumber} and boardNumber=#{boardNumber}
 	</delete>
 </mapper>

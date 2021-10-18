@@ -39,7 +39,36 @@ footer {
     color: #fff;
     margin-top: 420px;
 }
-
+#header {
+    display: flex;
+    position: relative;
+    height: 80px;
+    justify-content: space-between;
+    align-items: center;
+}
+a {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    text-decoration: none;
+    color: black;
+}
+#logo{
+	margin-top: 30px;
+}
+#header .menu {
+    display: block;
+    width: auto;
+    position: absolute;
+    right: 0;
+    top: 10px;
+    background: #fff;
+}
+.menu li{
+	display: inline-block; 
+	margin-top: 35px;
+}
 
 </style>
 
@@ -47,13 +76,35 @@ footer {
 <body>
 	<div class="container">
 	
+		
 		<div id="header">
-			<h1><a href="display">WDYS</a> </h1>
+			<div id="logo">
+				<h1><a href="display">WDYS</a> </h1>
+			
+			</div>
+			
+				<nav>
+					<ul class="menu">
+					 	<c:if test="${sessionScope.member == null }">
+							<li><a href="login">로그인  |</a></li>
+							<li><a href="signup">회원가입</a></li>
+						</c:if>
+					</ul>
+					<ul class="menu">
+						<c:if test="${sessionScope.member != null}">
+							<li>${sessionScope.member.name} 님  | </li>	
+						 	<li><a href="logout">로그아웃  | </a></li>
+						 	<li><a href="board/list">마이페이지</a></li>	 
+						</c:if> 
+					</ul>
+				</nav>
+				
 		</div>
+	<hr>
+		
 		
 		<div id="section">
 			<h2>${item.title}</h2>
-			<hr>
 			
 			<div>${item.boardDate}</div>
 			<div>작성자 ${item.id}</div>
@@ -103,17 +154,23 @@ footer {
 const insertData = {
 	id: $("#id").val(),
 	replyContext: "",
-	boardNumber: $("#boardNumber").val()
+	boardNumber: $("#boardNumber").val(),
+
 };
 
-$(document).on(function(){
+$(document).ready(function(){
 	replyList();
 });
 
 $("#insertBtn").click(function(){
 	insertData.replyContext = $("#replyContext").val();
-
-	replyInsert(insertData);
+	if(insertData.id != null){
+		replyInsert(insertData);
+	} else {
+		alert("로그인 후 이용바랍니다.");
+		$("#replyContext").val('');
+	}
+	
 });
 
 function replyInsert(insertData) {
@@ -124,11 +181,13 @@ function replyInsert(insertData) {
 		contentType: "application/json",
 		dataType: "json",
 		success: function(data){
-			if(data == 1){
+			console.log(data);
+			
+			if(data.replyNumber != 0){
 				replyList(data);
 				console.log(data);
 				$("#replyContext").val('');
-			}
+			} 
 		}
 	});
 }
@@ -147,12 +206,13 @@ function replyList(){
 			for(let i=0; i < data.length ; i++){ 
 	                a += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
 	                a += '<div>'+'댓글번호 : '+data[i].replyNumber+' | 작성자 : '+data[i].id;
-	                a += '<a onclick="replyDelete('+data[i].replyNumber+')"> 삭제 </a> </div>';
+	                a += '<a onclick="replyDelete('+data[i].replyNumber+')" id="deleteBtn"> 삭제 </a> </div>';
 	                a += '<div class="commentContent"> <p> 내용 : '+data[i].replyContext +'</p>';
 	                a += '</div></div>';
 	            };
 	            
-	            $("#replyList").html(a);
+	          
+	            $(".replyList").html(a);
 	            console.log(a);
 		}
 	});
@@ -160,6 +220,11 @@ function replyList(){
 
 var boardNumber = '${item.boardNumber}';//게시글 번호
 
+
+$("#deleteBtn").click(function(){
+	
+	replyDelete(replyNumber);
+}); 
 function replyDelete(replyNumber) {
 	$.ajax({
 		url: "/select/delete/" + replyNumber,

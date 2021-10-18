@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.ac.kopo.project.model.Reply;
@@ -26,6 +27,7 @@ public class ReplyController {
 	ReplyService service;
 	
 	@PostMapping("/list")
+	@ResponseBody
 	public List<Reply> list(){
 		return service.list();
 	}
@@ -40,7 +42,7 @@ public class ReplyController {
 		return item;
 	}
 	
-	@DeleteMapping("/{replyNumber}")
+	@DeleteMapping("/delete/{replyNumber}")
 	public Integer delete(@PathVariable int replyNumber) {
 		service.delete(replyNumber);
 		
