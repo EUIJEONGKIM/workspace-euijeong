@@ -15,8 +15,8 @@ public class ReplyDaoImpl implements ReplyDao {
 	SqlSession sql;
 	
 	@Override
-	public List<Reply> list() {
-		return sql.selectList("reply.list");
+	public List<Reply> list(int boardNumber) {
+		return sql.selectList("reply.list", boardNumber);
 	}
 
 	@Override

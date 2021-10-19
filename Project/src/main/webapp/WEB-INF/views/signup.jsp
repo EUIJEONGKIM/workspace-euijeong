@@ -110,10 +110,9 @@ h3{text-align: center; padding: 30px 0;}
 		<div class="col-8">
 		<form method="post" name="signupForm" >
 			<div class="form-group">
-				<label>아이디<div onclick="checkId_Async()" >중복확인</div></label> 
-				
+				<label>아이디</label> 
 				<input type="text" name="id" onchange="changeId()" class="form-control">
-				
+				<div onclick="checkId_Async()" class="btn btn-sm btn-outline-secondary" style="margin-top: 3px;">중복확인</div>
 			</div>
 			<div class="form-group">
 				<label>비밀번호</label>
@@ -133,7 +132,7 @@ h3{text-align: center; padding: 30px 0;}
 			</div>
 		</form>
 		<div class="signup_btn">
-			<button onclick="signup()">가입하기</button>
+			<button onclick="signup()" class="btn btn-dark">가입하기</button>
 		</div>
 		</div>
 		<div class="col-2"></div>

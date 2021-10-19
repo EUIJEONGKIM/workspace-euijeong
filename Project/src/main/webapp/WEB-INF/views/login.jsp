@@ -25,12 +25,20 @@ a{
 	font-weight: 700;
 	font-size: 40px;
 }
-.login_btn, .signup_btn{
+.login_btn{
 	border: 1px solid black;
 	border-radius: 3px;
 	background: black;
 	color: #fff;
 	padding: 10px 110px;
+	margin-top: 20px;
+}
+.signup_btn{
+	border: 1px solid black;
+	border-radius: 3px;
+	background: black;
+	color: #fff;
+	padding: 10px 118px;
 	margin-top: 20px;
 }
 div{
@@ -40,9 +48,7 @@ div{
 .form{
 
 }
-.signup, .list{
-	
-} 
+
 ul li{
 	list-style: none;
 	margin: 0 auto;

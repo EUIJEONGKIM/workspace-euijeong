@@ -15,8 +15,8 @@ public class ReplyServiceImpl implements ReplyService {
 	ReplyDao dao;
 	
 	@Override
-	public List<Reply> list() {
-		return dao.list();
+	public List<Reply> list(int boardNumber) {
+		return dao.list(boardNumber);
 	}
 
 	@Override

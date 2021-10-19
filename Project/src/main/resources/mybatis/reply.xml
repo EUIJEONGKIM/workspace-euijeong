@@ -5,6 +5,7 @@
 
 	<select id="list" resultType="Reply">
 		SELECT * FROM reply	
+		WHERE board_number=#{boardNumber}
 	</select>
 
 	<insert id="add">

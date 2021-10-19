@@ -70,6 +70,7 @@ h2{text-align: center;}
 					<input type="text" name="url" class="form-control" value="${item.url}">
 					</div>
 				</div>
+				
 				<div class="form-group form-group-sm" id="con">
 					<label class="col-sm-2 control-label">내용</label>
 					<textarea name="context" cols="60" rows="30" id="summernote">${item.context}</textarea>
@@ -77,13 +78,14 @@ h2{text-align: center;}
 				<div id="thumbnail">
 					<input type="hidden" name="thumbnail" value="">
 				</div>
+				
 				<button id="submit" style="margin-left: 230px;">변경</button>
 			</form>
 			
 			<div style="margin-left: 230px;">
 				<a href="list">목록</a>
 			</div>
-		
+			</div>
 			
 		
 	</div>

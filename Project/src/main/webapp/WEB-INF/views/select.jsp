@@ -93,7 +93,7 @@ a {
 					<ul class="menu">
 						<c:if test="${sessionScope.member != null}">
 							<li>${sessionScope.member.name} 님  | </li>	
-						 	<li><a href="logout">로그아웃  | </a></li>
+						 	<li><a href="/logout">로그아웃  | </a></li>
 						 	<li><a href="/board/list">마이페이지</a></li>	 
 						</c:if> 
 					</ul>
@@ -103,17 +103,23 @@ a {
 	<hr>
 		
 		
-		<div id="section">
-			<h2>${item.title}</h2>
-			
-			<div>${item.boardDate}</div>
-			<div>작성자 ${item.id}</div>
-			
-			<br>
-			<div>
-				${item.context}	
-			</div>
 		
+				<h2>${item.title}</h2>
+				
+			<div id="section" class="row">
+				<div class="col-3"></div>
+				<div class="col-6">
+				
+				<div></div>
+				<br>
+				<div>
+					${item.context}	
+				</div>
+				
+				</div>
+				<div class="row"><div class="col-9"></div> <div class="col-3">작성자 ${item.id} |  ${item.boardDate}</div> </div>
+				<div class="col-3"></div>
+			</div>
 <!-- 댓글 -->			
 			<hr>
 			
@@ -154,12 +160,13 @@ a {
 const insertData = {
 	id: $("#id").val(),
 	replyContext: "",
-	boardNumber: $("#boardNumber").val(),
-
+	boardNumber: $("#boardNumber").val()
 };
 
+var boardNumForRep = '${item.boardNumber}';//게시글 번호
+
 $(document).ready(function(){
-	replyList();
+	replyList(boardNumForRep);
 });
 
 $("#insertBtn").click(function(){
@@ -175,29 +182,28 @@ $("#insertBtn").click(function(){
 });
 
 function replyInsert(insertData) {
+	console.log(insertData);
+	
 	$.ajax({
 		url: "/select/add",
-		type: "PUT",
+		method: "PUT",
 		data: JSON.stringify(insertData),
 		contentType: "application/json",
 		dataType: "json",
 		success: function(data){
-			console.log(data);
-			
-			//if(data.replyNumber != 0){
-				replyList(data);
-				console.log(data);
-				$("#replyContext").val('');
-			//} 
+			replyList(boardNumForRep);
+			$("#replyContext").val('');                                      
 		}
 	});
 }
 
 
-function replyList(){
+
+function replyList(boardNumForRep){	
 	$.ajax({
 		url: "/select/list",
 		method: "POST",
+		data: boardNumForRep,
 		contentType: "application/json",
 		dataType: "json",
 		success: function(data){
@@ -218,24 +224,21 @@ function replyList(){
 	});
 }
 
-var boardNumber = '${item.boardNumber}';//게시글 번호
+
 
 function replyDelete(replyNumber) {
+	
 	$.ajax({
 		url: "/select/delete/" + replyNumber,
 		type: "DELETE",
 		contentType: "application/json",
 		dataType: "json",
 		success: function(data){
-			console.log(data);
-			if( replyNumber === data){
-				replyList();
-			}
+			replyList(boardNumForRep);
 		}
 		
 	});
 }
-
 
 	
 </script>

@@ -6,10 +6,11 @@ import kr.ac.kopo.project.model.Reply;
 
 public interface ReplyService {
 
-	List<Reply> list();
+	List<Reply> list(int boardNumber);
 
 	void add(Reply item);
 
 	void delete(Reply param);
 
+	
 }
