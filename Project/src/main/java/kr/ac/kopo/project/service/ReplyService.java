@@ -10,6 +10,6 @@ public interface ReplyService {
 
 	void add(Reply item);
 
-	void delete(int replyNumber);
+	void delete(Reply param);
 
 }

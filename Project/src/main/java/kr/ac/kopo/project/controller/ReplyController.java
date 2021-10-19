@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import kr.ac.kopo.project.model.Reply;
 import kr.ac.kopo.project.service.ReplyService;
@@ -43,8 +44,13 @@ public class ReplyController {
 	}
 	
 	@DeleteMapping("/delete/{replyNumber}")
-	public Integer delete(@PathVariable int replyNumber) {
-		service.delete(replyNumber);
+	public Integer delete(@PathVariable int replyNumber, @SessionAttribute String id) {
+		Reply param = new Reply();
+		
+		param.setReplyNumber(replyNumber);
+		param.setId(id);
+		
+		service.delete(param);
 		
 		return replyNumber;
 	}

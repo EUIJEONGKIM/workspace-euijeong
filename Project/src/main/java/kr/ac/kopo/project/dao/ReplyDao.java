@@ -10,6 +10,6 @@ public interface ReplyDao {
 
 	void add(Reply item);
 
-	void delete(int replyNumber);
+	void delete(Reply param);
 
 }

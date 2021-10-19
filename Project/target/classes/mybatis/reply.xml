@@ -18,6 +18,6 @@
 	
 	<delete id="delete">
 		DELETE FROM reply
-		WHERE reply_number=#{replyNumber} and boardNumber=#{boardNumber}
+		WHERE reply_number=#{replyNumber} and id=#{id}
 	</delete>
 </mapper>

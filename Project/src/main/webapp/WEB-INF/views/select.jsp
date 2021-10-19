@@ -79,22 +79,22 @@ a {
 		
 		<div id="header">
 			<div id="logo">
-				<h1><a href="display">WDYS</a> </h1>
+				<h1><a href="/display">WDYS</a> </h1>
 			
 			</div>
 			
 				<nav>
 					<ul class="menu">
 					 	<c:if test="${sessionScope.member == null }">
-							<li><a href="login">로그인  |</a></li>
-							<li><a href="signup">회원가입</a></li>
+							<li><a href="/login">로그인  |</a></li>
+							<li><a href="/signup">회원가입</a></li>
 						</c:if>
 					</ul>
 					<ul class="menu">
 						<c:if test="${sessionScope.member != null}">
 							<li>${sessionScope.member.name} 님  | </li>	
 						 	<li><a href="logout">로그아웃  | </a></li>
-						 	<li><a href="board/list">마이페이지</a></li>	 
+						 	<li><a href="/board/list">마이페이지</a></li>	 
 						</c:if> 
 					</ul>
 				</nav>
@@ -129,7 +129,7 @@ a {
 					  		</c:if>
 					  		
 					  		<input type="text" id="replyContext" class="form-control" name="replyContext">
-					  		<button type="button" class="btn btn-dark" name="insertBtn" id="insertBtn">등록 </button>
+					  		<button type="button" class="btn btn-sm btn-dark" name="insertBtn" id="insertBtn" style="margin-top: 10px;">등록 </button>
 						</form>
 					</div>
 					
@@ -164,6 +164,7 @@ $(document).ready(function(){
 
 $("#insertBtn").click(function(){
 	insertData.replyContext = $("#replyContext").val();
+	
 	if(insertData.id != null){
 		replyInsert(insertData);
 	} else {
@@ -183,11 +184,11 @@ function replyInsert(insertData) {
 		success: function(data){
 			console.log(data);
 			
-			if(data.replyNumber != 0){
+			//if(data.replyNumber != 0){
 				replyList(data);
 				console.log(data);
 				$("#replyContext").val('');
-			} 
+			//} 
 		}
 	});
 }
@@ -206,12 +207,11 @@ function replyList(){
 			for(let i=0; i < data.length ; i++){ 
 	                a += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
 	                a += '<div>'+'댓글번호 : '+data[i].replyNumber+' | 작성자 : '+data[i].id;
-	                a += '<a onclick="replyDelete('+data[i].replyNumber+')" id="deleteBtn"> 삭제 </a> </div>';
+	                a += '<button onclick="replyDelete('+data[i].replyNumber+')" id="deleteBtn" style="margin: 8px;" class="btn btn-sm btn-outline-secondary"> 삭제 </button> </div>';
 	                a += '<div class="commentContent"> <p> 내용 : '+data[i].replyContext +'</p>';
 	                a += '</div></div>';
-	            };
+	            };	            
 	            
-	          
 	            $(".replyList").html(a);
 	            console.log(a);
 		}
@@ -220,11 +220,6 @@ function replyList(){
 
 var boardNumber = '${item.boardNumber}';//게시글 번호
 
-
-$("#deleteBtn").click(function(){
-	
-	replyDelete(replyNumber);
-}); 
 function replyDelete(replyNumber) {
 	$.ajax({
 		url: "/select/delete/" + replyNumber,

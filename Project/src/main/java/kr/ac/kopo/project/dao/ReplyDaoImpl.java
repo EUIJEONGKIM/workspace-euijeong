@@ -25,8 +25,8 @@ public class ReplyDaoImpl implements ReplyDao {
 	}
 
 	@Override
-	public void delete(int replyNumber) {
-		sql.delete("reply.delete", replyNumber);
+	public void delete(Reply param) {
+		sql.delete("reply.delete", param);
 	}
 
 }
