@@ -66,7 +66,6 @@ public class BoardController {
 	@RequestMapping(value="/update", method=RequestMethod.POST)
 	public String update(Board item) {
 		service.update(item);
-		System.out.println(item.toString());
 		
 		return "redirect:list";
 	}

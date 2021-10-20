@@ -22,7 +22,7 @@ ul li{
 .carousel-inner,
 .carousel-inner img {
   height: 100%;
-  width: auto;
+  width: 100%;
 }
 .carousel-item {
   text-align: center;
@@ -35,7 +35,7 @@ ul li{
 }
 #thumimg{
 	height: 290px;
-	width: 290px; 
+	width: 100%; 
 }
 #header {
     display: flex;

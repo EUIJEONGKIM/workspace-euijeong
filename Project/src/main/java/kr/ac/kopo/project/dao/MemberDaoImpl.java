@@ -1,5 +1,7 @@
 package kr.ac.kopo.project.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -25,6 +27,11 @@ public class MemberDaoImpl implements MemberDao {
 	@Override
 	public Member item(String id) {
 		return sql.selectOne("member.item", id);
+	}
+
+	@Override
+	public List<Member> list() {
+		return sql.selectList("member.list");
 	}
 
 }

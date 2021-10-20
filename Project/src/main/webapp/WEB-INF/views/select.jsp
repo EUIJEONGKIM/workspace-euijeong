@@ -212,7 +212,7 @@ function replyList(boardNumForRep){
 			
 			for(let i=0; i < data.length ; i++){ 
 	                a += '<div class="commentArea" style="border-bottom:1px solid darkgray; margin-bottom: 15px;">';
-	                a += '<div>'+'댓글번호 : '+data[i].replyNumber+' | 작성자 : '+data[i].id;
+	                a += '<div data-id="'+data[i].id+'">'+'댓글번호 : '+data[i].replyNumber+' | 작성자 : '+data[i].id;
 	                a += '<button onclick="replyDelete('+data[i].replyNumber+')" id="deleteBtn" style="margin: 8px;" class="btn btn-sm btn-outline-secondary"> 삭제 </button> </div>';
 	                a += '<div class="commentContent"> <p> 내용 : '+data[i].replyContext +'</p>';
 	                a += '</div></div>';
@@ -225,10 +225,9 @@ function replyList(boardNumForRep){
 }
 
 
-
 function replyDelete(replyNumber) {
-	
-	$.ajax({
+		
+ 	 	$.ajax({
 		url: "/select/delete/" + replyNumber,
 		type: "DELETE",
 		contentType: "application/json",
@@ -237,8 +236,9 @@ function replyDelete(replyNumber) {
 			replyList(boardNumForRep);
 		}
 		
-	});
-}
+	}); 
+
+ }
 
 	
 </script>
