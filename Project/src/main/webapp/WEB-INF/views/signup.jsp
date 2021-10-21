@@ -152,7 +152,13 @@ footer {
 	font-family: 'twaysky';
 }
 #logo h1{font-size: 35px;}
-
+footer {
+    padding: 30px 0;
+    text-align: center;
+    background: #ccc;
+    color: #fff;
+    margin-top: 200px;
+}
 </style>
 
 </head>
@@ -162,9 +168,7 @@ footer {
 			<div id="logo">
 				<h1><a href="/display">WDYS</a> </h1>
 			
-			</div>
-			
-				
+			</div>	
 				
 		</div>
 	<hr>
@@ -202,5 +206,6 @@ footer {
 		<div class="col-2"></div>
 	</div>
 	</div>
+	<footer>Copyright(c) 2021 WDYS All rights reserved</footer>
 </body>
 </html>
