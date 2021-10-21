@@ -20,7 +20,7 @@ ul li{list-style: none;}
 a{text-decoration: none; color: black;}
 h3{text-align: center;padding: 20px;}
 p{margin: 50px 0;}
-.row{margin-top: 50px}
+.row{margin-top: 50px; margin-bottom: 580px;}
 .wrap{width:960px;margin:0 auto;}
         #main_header{position:relative;height:80px;margin-top:20px; }
         #main_header .logo h1{font-family:Oswald;}
@@ -43,7 +43,13 @@ p{margin: 50px 0;}
 	font-family: 'twaysky';
 }
 #logo h1{font-size: 35px;}
-
+footer {
+    padding: 30px 0;
+    text-align: center;
+    background: #ccc;
+    color: #fff;
+   
+}
 </style>
 </head>
 <body>
@@ -97,7 +103,7 @@ p{margin: 50px 0;}
 	</div>
 
 
-	
+	<footer>Copyright(c) 2021 WDYS All rights reserved</footer>
 	
 	
 

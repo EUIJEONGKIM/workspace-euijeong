@@ -15,7 +15,7 @@
 ul li{list-style: none;}
 *{margin:0;padding:0;}
 a{text-decoration: none; color: black;}
-h3{text-align: center;padding: 20px; border-top: 1px solid black;}
+h3{text-align: center;padding: 20px; }
 table{margin: 20px 20px; }
 .wrap{width:960px;margin:0 auto;}
         #main_header{position:relative;height:80px;margin-top:20px; }
@@ -36,7 +36,13 @@ table{margin: 20px 20px; }
 	font-family: 'twaysky';
 }
 #logo h1{font-size: 35px;}
-
+footer {
+    padding: 30px 0;
+    text-align: center;
+    background: #ccc;
+    color: #fff;
+    margin-top: 220px;
+}
 </style>
 <script>
 
@@ -46,7 +52,7 @@ table{margin: 20px 20px; }
 	<div>
 		
 		<div id="main_header" class="wrap">
-			<div class="logo">
+			<div id="logo">
 				<h1><a href="../display">WDYS</a></h1>
 			</div>
 			<c:if test="${sessionScope.member != null }">
@@ -58,6 +64,7 @@ table{margin: 20px 20px; }
 					</nav>
 			</c:if>
 		</div>
+		<hr>
 		<div>
 			<h3>My List</h3>
 <!-- 검색부분 -->		
@@ -144,7 +151,7 @@ table{margin: 20px 20px; }
 		</div>
 		
 	</div>
-	
+		<footer>Copyright(c) 2021 WDYS All rights reserved</footer>
 	
 </body>
 </html>

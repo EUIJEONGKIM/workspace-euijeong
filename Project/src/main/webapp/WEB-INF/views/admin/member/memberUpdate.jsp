@@ -49,7 +49,13 @@ table{margin: 20px 20px; }
 	font-family: 'twaysky';
 }
 #logo h1{font-size: 35px;}
-
+footer {
+    padding: 30px 0;
+    text-align: center;
+    background: #ccc;
+    color: #fff;
+    margin-top: 450px;
+}
 </style>
 
 </head>
@@ -112,6 +118,6 @@ table{margin: 20px 20px; }
 		</form>
 	</div>
 	
-	
+	<footer>Copyright(c) 2021 WDYS All rights reserved</footer>
 </body>
 </html>
