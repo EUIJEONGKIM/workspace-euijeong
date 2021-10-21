@@ -42,7 +42,7 @@ table{margin: 20px 20px; }
 					<nav id="main_lnb">
 						<ul>
 							<li>${sessionScope.member.name} 님</li>	
-						 	<li><a href="../logout">로그아웃</a></li>
+						 	<li><a href="../../logout">로그아웃</a></li>
 						 </ul>
 					</nav>
 			</c:if>
@@ -57,22 +57,24 @@ table{margin: 20px 20px; }
 						<table class="table table-hover">
 							<thead class="table-dark">
 								<tr>
-									<th>번호</th>
-									<th>전시명</th>
-									<th>작성날짜</th>		
+									<th>글번호</th>
+									<th>회원번호</th>
+									<th>글제목</th>		
+									<th>작성일</th>		
 									<th>관리</th>		
 								</tr>
 							</thead>
 							<tbody>
-								<c:if test="${list.size() < 1 }" >
+								<c:if test="${postList.size() < 1 }" >
 									<tr>
 										<td colspan="4">등록된 글이 없습니다.</td>
 									</tr>
 								</c:if>
-								<c:forEach var="item" items="${list}">
+								<c:forEach var="item" items="${postList}">
 									<tr>
 										<td>${item.boardNumber}</td>
-										<td><a href="update?boardNumber=${item.boardNumber}">${item.title}</a></td>
+										<td>${item.id}</td>
+										<td>${item.title}</td>
 										<td>${item.boardDate}</td>
 										<td><a href="update?boardNumber=${item.boardNumber}" class="update_btn btn btn-outline-secondary">변경</a>
 										<a href="delete?boardNumber=${item.boardNumber}" class="delete_btn btn btn-outline-danger">삭제</a></td>
@@ -101,9 +103,7 @@ table{margin: 20px 20px; }
 						<a href="add" class="add_btn btn btn-secondary">등록</a>
 					</div>
 					
-					<div style="margin-top: 10px;">
-						<a href="../display">추천 목록 바로가기 >></a>
-					</div>
+					
 				</div>
 				<div class="col-2"></div>
 				

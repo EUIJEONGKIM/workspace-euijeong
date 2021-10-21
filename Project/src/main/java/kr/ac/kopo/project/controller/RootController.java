@@ -75,7 +75,7 @@ public class RootController {
 	//로그인 아이디, 비밀번호 확인
 	@RequestMapping(value="/login", method=RequestMethod.POST)//login
 	public String login(Member item, HttpSession session) {
-		Member member = service.item(item.getId());
+		Member member = service.item(item.getId()); //디비 정보
 		
 		if(member != null) {
 			String id = member.getId();
@@ -85,7 +85,11 @@ public class RootController {
 				session.setAttribute("member", member);
 				session.setAttribute("id", id);
 				
+				if(id.equals("admin")) {
+					return "redirect:admin/index";
+				}
 				return "redirect:display";	
+				
 			}
 			return "redirect:.";
 		}

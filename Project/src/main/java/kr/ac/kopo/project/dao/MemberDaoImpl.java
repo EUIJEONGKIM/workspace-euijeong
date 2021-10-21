@@ -34,4 +34,14 @@ public class MemberDaoImpl implements MemberDao {
 		return sql.selectList("member.list");
 	}
 
+	@Override
+	public void update(Member item) {
+		sql.update("member.update", item);
+	}
+
+	@Override
+	public void delete(String id) {
+		sql.delete("member.delete", id);
+	}
+
 }

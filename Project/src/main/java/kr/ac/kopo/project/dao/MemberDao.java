@@ -14,4 +14,8 @@ public interface MemberDao {
 
 	List<Member> list();
 
+	void update(Member item);
+
+	void delete(String id);
+
 }

@@ -18,8 +18,19 @@
 		WHERE id=#{id}
 	</select>
 	
+	<select id="list" resultType="Member">
+		SELECT * FROM member
+	</select>
 	
+	<update id="update">
+		UPDATE member
+		SET passwd=#{passwd},name=#{name},tel=#{tel}
+		WHERE id=#{id}
+	</update>
 	
-	
+	<delete id="delete">
+		DELETE FROM member
+		WHERE id=#{id}
+	</delete>	
 	
 </mapper>
