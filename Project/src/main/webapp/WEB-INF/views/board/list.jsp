@@ -64,8 +64,8 @@ table{margin: 20px 20px; }
 			<div class="mb-2">
 				<form>
 					<div class="row">
-						<div class="col-2"></div>
-						<div class="col-2">
+						<div class="col-3"></div>
+						<div class="col-1">
 							<select name="search" class="form-control">
 								<option value="0">전체 검색</option>
 								<option value="1" ${pager.search == 1 ? 'selected' : '' }>글 번호</option>
@@ -74,7 +74,7 @@ table{margin: 20px 20px; }
 								<option value="4" ${pager.search == 4 ? 'selected' : '' }>작성일</option>
 							</select>
 						</div>
-						<div class="col-6">
+						<div class="col-5">
 							<input type="text" name="keyword" class="form-control" value="${pager.keyword}">
 						</div>
 						<div class="col-2">

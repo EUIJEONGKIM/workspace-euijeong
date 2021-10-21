@@ -99,7 +99,48 @@ h3{text-align: center; padding: 30px 0;}
 	margin: 0 auto;
 	display: inline-block;
 }
+ul li{
+	list-style: none;
+	margin: 0 auto;
+} 
+#header {
+    display: flex;
+    position: relative;
+    height: 80px;
+    justify-content: space-between;
+    align-items: center;
+}
+a {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    text-decoration: none;
+    color: black;
+}
 
+#header .menu {
+    display: block;
+    width: auto;
+    position: absolute;
+    right: 0;
+    top: 10px;
+    background: #fff;
+}
+.menu li{
+	display: inline-block; 
+	margin-top: 35px;
+}
+footer {
+    padding: 30px 0;
+    text-align: center;
+    background: #ccc;
+    color: #fff;
+    margin-top: 200px;
+}
+.row{
+	margin-top: 20px;
+}
 @font-face {
     font-family: 'twaysky';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twaysky.woff') format('woff');
@@ -117,8 +158,17 @@ h3{text-align: center; padding: 30px 0;}
 </head>
 <body>
 	<div id="wrap">
-	
-	<div class="container row" >
+	<div id="header">
+			<div id="logo">
+				<h1><a href="/display">WDYS</a> </h1>
+			
+			</div>
+			
+				
+				
+		</div>
+	<hr>
+	<div class="container row">
 		<h3>회원가입</h3>
 		<div class="col-2"></div>
 		<div class="col-8">

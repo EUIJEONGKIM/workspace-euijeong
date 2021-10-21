@@ -14,10 +14,7 @@
 <title></title>
 
 <style>
-ul li{
-	list-style: none;
-	margin: 0 auto;
-} 
+
 .carousel-item,
 .carousel-inner,
 .carousel-inner img {
@@ -37,6 +34,10 @@ ul li{
 	height: 290px;
 	width: 100%; 
 }
+ul li{
+	list-style: none;
+	margin: 0 auto;
+} 
 #header {
     display: flex;
     position: relative;
