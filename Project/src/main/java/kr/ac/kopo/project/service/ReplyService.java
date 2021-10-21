@@ -12,5 +12,13 @@ public interface ReplyService {
 
 	void delete(Reply param);
 
+	void delete(int replyNumber);
+
+	List<Reply> replyList();
+
+	Reply item(int replyNumber);
+
+	void update(Reply item);
+
 	
 }

@@ -99,11 +99,25 @@ h3{text-align: center; padding: 30px 0;}
 	margin: 0 auto;
 	display: inline-block;
 }
+
+@font-face {
+    font-family: 'twaysky';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twaysky.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+#logo{
+	margin-top: 30px;
+	font-family: 'twaysky';
+}
+#logo h1{font-size: 35px;}
+
 </style>
 
 </head>
 <body>
 	<div id="wrap">
+	
 	<div class="container row" >
 		<h3>회원가입</h3>
 		<div class="col-2"></div>

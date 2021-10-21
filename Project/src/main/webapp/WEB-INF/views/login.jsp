@@ -63,6 +63,7 @@ count{display: inline-block;}
 </head>
 
 <body>
+	
 	<div id="container">
 		<div class="title_box">
 			<h1 class="title">&nbsp&nbsp What do you see?</h1>

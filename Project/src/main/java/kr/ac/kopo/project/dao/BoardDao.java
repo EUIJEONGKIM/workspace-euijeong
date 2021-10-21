@@ -23,6 +23,8 @@ public interface BoardDao {
 
 	List<Board> listAll(Pager pager);
 
+	List<Board> postList();
+
 
 	
 	

@@ -59,5 +59,7 @@
 		WHERE board_number=#{boardNumber}
 	</delete>
 
-
+	<select id="postList" resultType="Board">
+		SELECT * FROM board
+	</select>
 </mapper>

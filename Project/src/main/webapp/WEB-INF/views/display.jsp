@@ -52,9 +52,7 @@ a {
     text-decoration: none;
     color: black;
 }
-#logo{
-	margin-top: 30px;
-}
+
 #header .menu {
     display: block;
     width: auto;
@@ -77,7 +75,17 @@ footer {
 .row{
 	margin-top: 20px;
 }
-
+@font-face {
+    font-family: 'twaysky';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twaysky.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+#logo{
+	margin-top: 30px;
+	font-family: 'twaysky';
+}
+#logo h1{font-size: 35px;}
 
 </style>
 

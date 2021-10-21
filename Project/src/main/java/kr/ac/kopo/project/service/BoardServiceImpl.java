@@ -54,4 +54,9 @@ public class BoardServiceImpl implements BoardService {
 		return dao.listAll(pager);
 	}
 
+	@Override
+	public List<Board> postList() {
+		return dao.postList();
+	}
+
 }

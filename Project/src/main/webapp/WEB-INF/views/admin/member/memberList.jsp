@@ -15,7 +15,7 @@
 ul li{list-style: none;}
 *{margin:0;padding:0;}
 a{text-decoration: none; color: black;}
-h3{text-align: center;padding: 20px; border-top: 1px solid black;}
+h3{text-align: center;padding: 20px;}
 table{margin: 20px 20px; }
 .wrap{width:960px;margin:0 auto;}
         #main_header{position:relative;height:80px;margin-top:20px; }
@@ -25,6 +25,17 @@ table{margin: 20px 20px; }
         #main_header #main_lnb li a{color:#000;padding:10px;font-weight:700;}
         #main_header #main_lnb li a:hover{color:red;}
 .add_btn{margin-left:20px; border-radius: 3px; padding: 5px 10px;}
+@font-face {
+    font-family: 'twaysky';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twaysky.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+#logo{
+	margin-top: 30px;
+	font-family: 'twaysky';
+}
+#logo h1{font-size: 35px;}
 
 </style>
 <script>
@@ -35,8 +46,8 @@ table{margin: 20px 20px; }
 	<div>
 		
 		<div id="main_header" class="wrap">
-			<div class="logo">
-				<h1><a href="../display">WDYS</a></h1>
+			<div id="logo">
+				<h1><a href="/admin/index">WDYS</a></h1>
 			</div>
 			<c:if test="${sessionScope.member != null }">
 					<nav id="main_lnb">
@@ -47,6 +58,7 @@ table{margin: 20px 20px; }
 					</nav>
 			</c:if>
 		</div>
+		<hr>
 		<div>
 			<h3>Member List</h3>
 
@@ -82,21 +94,7 @@ table{margin: 20px 20px; }
 								</c:forEach>
 							</tbody>
 							<tfoot>
-								<tr>
-									<td colspan="5">
-										<div  class="pagination justify-content-center">
-											<div class="page-item"><a href="?page=1&${pager.query}" class="page-link">처음</a></div>
-											<div class="page-item"><a href="?page=${pager.prev}&${pager.query}" class="page-link">이전</a></div>
-												
-														<c:forEach var="page" items="${pager.list}">
-															<div class="page-item ${pager.page == page ? 'active' : ''}"><a href="?page=${page}&${pager.query}" class="page-link">${page}</a></div>
-														</c:forEach>
-												
-											<div class="page-item"><a href="?page=${pager.next}&${pager.query}" class="page-link">다음</a></div>	
-											<div class="page-item"><a href="${pager.last}&${pager.query}" class="page-link">마지막</a></div>
-										</div>
-									</td>
-								</tr>
+								
 							</tfoot>
 						</table>
 					<div>

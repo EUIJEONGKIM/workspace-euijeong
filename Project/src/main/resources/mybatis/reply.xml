@@ -21,4 +21,24 @@
 		DELETE FROM reply
 		WHERE reply_number=#{replyNumber} and id=#{id}
 	</delete>
+	
+	<select id="replyList" resultType="Reply">
+		SELECT * FROM reply	
+	</select>
+	
+	<delete id="adminDelete">
+		DELETE FROM reply
+		WHERE reply_number=#{replyNumber}
+	</delete>
+	
+	<select id="item" resultType="Reply">
+		SELECT * FROM reply
+		WHERE reply_number=#{replyNumber}
+	</select>
+	
+	<update id="update">
+		UPDATE reply
+		SET reply_context=#{replyContext}
+		WHERE reply_number=#{replyNumber}
+	</update>
 </mapper>

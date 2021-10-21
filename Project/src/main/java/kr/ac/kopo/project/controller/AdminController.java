@@ -53,7 +53,7 @@ public class AdminController {
 	public String memberAdd(Member item) {
 		memberService.add(item);
 		
-		return "redirect:memberList";
+		return "redirect:list";
 	}
 	
 	@GetMapping("/member/update")
@@ -68,20 +68,20 @@ public class AdminController {
 	public String memberUpdate(Member item) {
 		memberService.update(item);
 		
-		return "redirect:memberList";
+		return "redirect:list";
 	}
 	
 	@RequestMapping("/member/delete")
 	public String memberDelete(String id) {
 		memberService.delete(id);
 		
-		return "reidrect:memberList";
+		return "redirect:list";
 	}
 	
 	
 	@RequestMapping("/post/list")
 	public String postList(Model model) {
-		List<Board> postList = postService.list();
+		List<Board> postList = postService.postList();
 		
 		model.addAttribute("postList", postList);
 		
@@ -90,13 +90,13 @@ public class AdminController {
 	
 	@GetMapping("/post/add")
 	public String  postAdd() {
-		return postPath + "postList";
+		return postPath + "postAdd";
 	}
 	@PostMapping("/post/add")
 	public String postAdd(Board item) {
 		postService.add(item);
 		
-		return "redirect:postList";
+		return "redirect:list";
 	}
 	
 	@GetMapping("/post/update")
@@ -111,22 +111,45 @@ public class AdminController {
 	public String postUpdate(Board item) {
 		postService.update(item);
 		
-		return "redirect:postList";
+		return "redirect:list";
 	}
 	
 	@RequestMapping("/post/delete")
 	public String postDelete(int boardNumber) {
 		postService.delete(boardNumber);
 		
-		return "redirect:postList";
+		return "redirect:list";
 	}
 	
 	@RequestMapping("/reply/list")
 	public String replyList(Model model) {
-		List<Reply> replyList = replyService.list();
+		List<Reply> replyList = replyService.replyList();
 		
 		model.addAttribute("replyList", replyList);
 		
 		return replyPath + "replyList";
 	}
+	
+	@GetMapping("/reply/update")
+	public String replyAdd(int replyNumber, Model model) {
+		Reply item = replyService.item(replyNumber);
+		
+		model.addAttribute("item", item);
+		
+		return replyPath + "replyUpdate";
+	}
+	@PostMapping("/reply/update")
+	public String replyAdd(Reply item) {
+		replyService.update(item);
+		
+		return "redirect:list";
+	}
+	
+	@RequestMapping("/reply/delete")
+	public String replyDelete(int replyNumber) {
+		replyService.delete(replyNumber);
+		
+		return "redirect:list";
+	}
+	
 }

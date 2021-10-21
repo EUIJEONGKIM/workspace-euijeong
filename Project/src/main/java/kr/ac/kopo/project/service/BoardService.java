@@ -20,5 +20,7 @@ public interface BoardService {
 	List<Board> list(Pager pager);
 
 	List<Board> listAll(Pager pager);
+
+	List<Board> postList();
 	
 }

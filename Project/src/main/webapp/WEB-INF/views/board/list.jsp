@@ -25,6 +25,17 @@ table{margin: 20px 20px; }
         #main_header #main_lnb li a{color:#000;padding:10px;font-weight:700;}
         #main_header #main_lnb li a:hover{color:red;}
 .add_btn{margin-left:20px; border-radius: 3px; padding: 5px 10px;}
+@font-face {
+    font-family: 'twaysky';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twaysky.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+#logo{
+	margin-top: 30px;
+	font-family: 'twaysky';
+}
+#logo h1{font-size: 35px;}
 
 </style>
 <script>

@@ -29,4 +29,24 @@ public class ReplyDaoImpl implements ReplyDao {
 		sql.delete("reply.delete", param);
 	}
 
+	@Override
+	public void delete(int replyNumber) {
+		sql.delete("reply.adminDelete", replyNumber);
+	}
+
+	@Override
+	public List<Reply> replyList() {
+		return sql.selectList("reply.replyList");
+	}
+
+	@Override
+	public Reply item(int replyNumber) {
+		return sql.selectOne("reply.item", replyNumber);
+	}
+
+	@Override
+	public void update(Reply item) {
+		sql.update("reply.update", item);
+	}
+
 }

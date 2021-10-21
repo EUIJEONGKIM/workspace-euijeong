@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%
+	Date nowTime = new Date();
+	SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일");
+%>    
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -15,7 +22,7 @@
 ul li{list-style: none;}
 *{margin:0;padding:0;}
 a{text-decoration: none; color: black;}
-h3{text-align: center;padding: 20px; border-top: 1px solid black;}
+h3{text-align: center;padding: 20px;}
 table{margin: 20px 20px; }
 .wrap{width:960px;margin:0 auto;}
         #main_header{position:relative;height:80px;margin-top:20px; }
@@ -25,6 +32,17 @@ table{margin: 20px 20px; }
         #main_header #main_lnb li a{color:#000;padding:10px;font-weight:700;}
         #main_header #main_lnb li a:hover{color:red;}
 .add_btn{margin-left:20px; border-radius: 3px; padding: 5px 10px;}
+@font-face {
+    font-family: 'twaysky';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_tway@1.0/twaysky.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+#logo{
+	margin-top: 30px;
+	font-family: 'twaysky';
+}
+#logo h1{font-size: 35px;}
 
 </style>
 <script>
@@ -35,20 +53,21 @@ table{margin: 20px 20px; }
 	<div>
 		
 		<div id="main_header" class="wrap">
-			<div class="logo">
-				<h1><a href="../display">WDYS</a></h1>
+			<div id="logo">
+				<h1><a href="/admin/index">WDYS</a></h1>
 			</div>
 			<c:if test="${sessionScope.member != null }">
 					<nav id="main_lnb">
 						<ul>
 							<li>${sessionScope.member.name} 님</li>	
-						 	<li><a href="../logout">로그아웃</a></li>
+						 	<li><a href="../../logout">로그아웃</a></li>
 						 </ul>
 					</nav>
 			</c:if>
 		</div>
+		<hr>
 		<div>
-			<h3>Member List</h3>
+			<h3>Reply List</h3>
 
 <!-- 테이블 -->				
 				<div class="row">
@@ -57,51 +76,37 @@ table{margin: 20px 20px; }
 						<table class="table table-hover">
 							<thead class="table-dark">
 								<tr>
-									<th>아이디</th>
-									<th>비밀번호</th>
-									<th>성명</th>		
-									<th>전화번호</th>	
-									<th>관리</th>											
+									<th>댓글번호</th>
+									<th>글번호</th>
+									<th>작성자</th>
+									<th>댓글내용</th>		
+									<th>작성일</th>		
+									<th>관리</th>										
 								</tr>
 							</thead>
 							<tbody>
-								<c:if test="${memberList.size() < 1 }" >
+								<c:if test="${replyList.size() < 1 }" >
 									<tr>
-										<td colspan="4">등록된 회원이 없습니다.</td>
+										<td colspan="5">등록된 회원이 없습니다.</td>
 									</tr>
 								</c:if>
-								<c:forEach var="item" items="${memberList}">
+								<c:forEach var="item" items="${replyList}">
 									<tr>
+										<td>${item.replyNumber}</td>
+										<td>${item.boardNumber}</td>
 										<td>${item.id}</td>
-										<td>${item.passwd}</td>
-										<td>${item.name}</td>
-										<td>${item.tel}</td>
-										<td><a href="update?id=${item.id}" class="update_btn btn btn-outline-secondary">변경</a>
-										<a href="delete?id=${item.id}" class="delete_btn btn btn-outline-danger">삭제</a></td>
+										<td>${item.replyContext}</td>
+										<td>${item.replyDate}</td>
+										<td><a href="update?replyNumber=${item.replyNumber}" class="update_btn btn btn-outline-secondary">변경</a>
+										<a href="delete?replyNumber=${item.replyNumber}" class="delete_btn btn btn-outline-danger">삭제</a></td>
 									</tr>
 								</c:forEach>
 							</tbody>
 							<tfoot>
-								<tr>
-									<td colspan="5">
-										<div  class="pagination justify-content-center">
-											<div class="page-item"><a href="?page=1&${pager.query}" class="page-link">처음</a></div>
-											<div class="page-item"><a href="?page=${pager.prev}&${pager.query}" class="page-link">이전</a></div>
-												
-														<c:forEach var="page" items="${pager.list}">
-															<div class="page-item ${pager.page == page ? 'active' : ''}"><a href="?page=${page}&${pager.query}" class="page-link">${page}</a></div>
-														</c:forEach>
-												
-											<div class="page-item"><a href="?page=${pager.next}&${pager.query}" class="page-link">다음</a></div>	
-											<div class="page-item"><a href="${pager.last}&${pager.query}" class="page-link">마지막</a></div>
-										</div>
-									</td>
-								</tr>
+								
 							</tfoot>
 						</table>
-					<div>
-						<a href="add" class="add_btn btn btn-secondary">등록</a>
-					</div>
+					
 					
 				</div>
 				<div class="col-2"></div>

@@ -55,6 +55,11 @@ public class BoardDaoImpl implements BoardDao {
 		return sql.selectList("board.listAll", pager);
 	}
 
+	@Override
+	public List<Board> postList() {
+		return sql.selectList("board.postList");
+	}
+
 	
 
 }
