@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%
@@ -52,7 +54,7 @@ footer {
 }
 </style>
 <script>
-
+  
 </script>
 </head>
 <body>
@@ -102,7 +104,7 @@ footer {
 										<td>${item.boardNumber}</td>
 										<td>${item.id}</td>
 										<td>${item.replyContext}</td>
-										<td>${item.replyDate}</td>
+										<td><fmt:formatDate value="${item.replyDate}" pattern="yyyy년 MM월 dd일"/></td>
 										<td><a href="update?replyNumber=${item.replyNumber}" class="update_btn btn btn-outline-secondary">변경</a>
 										<a href="delete?replyNumber=${item.replyNumber}" class="delete_btn btn btn-outline-danger">삭제</a></td>
 									</tr>
